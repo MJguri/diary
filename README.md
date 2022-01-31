@@ -13,3 +13,9 @@
    * LoginController (로그인버튼 클릭시, 로그인 폼으로 이동기능) 추가
    * MemberJoinController ( 회원가입 버튼 클릭시, 회원가입 폼으로 이동기능) 추가
    * 위의 3개의 Controller를 xml 설정파일에 빈객체로 생성
+   * MemberVO, MeberDAO 객체 생성 후 xml에 빈 객체로 생성 
+* 2022-02-01 
+   * 회원가입 기능 구현
+   * 로그인 기능 구현 
+   * DiaryListController (로그인시 자신의 일기 LIST 불러오기 기능) 추가
+   * DiaryVO, DiaryDAO 객체 생성 후 xml에 빈객체로 생성
