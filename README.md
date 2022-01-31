@@ -8,3 +8,8 @@
     * spring jdbc (https://mvnrepository.com/artifact/org.springframework/spring-jdbc)
     * servlet-api (https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api)
     * servlet.jsp-api (https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api)
+* 2022-01-31
+ * IdCheckController (회원가입시, 중복아이디 확인 기능) 추가
+ * LoginController (로그인버튼 클릭시, 로그인 폼으로 이동기능) 추가
+ * MemberJoinController ( 회원가입 버튼 클릭시, 회원가입 폼으로 이동기능) 추가
+ * 위의 3개의 Controller를 xml 설정파일에 빈객체로 생성
