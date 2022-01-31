@@ -17,11 +17,24 @@
 		<constructor-arg ref="dataSource"/>
 	</bean>
 	
-	<bean id="loginForm" class="mj.guri.controller.LoginController"/>
-	<bean id="joinForm" class="mj.guri.controller.MemberJoinController"/>
+	<bean id="diaryDao" class="mj.guri.dao.DiaryDAO">
+		<constructor-arg ref="dataSource"/>
+	</bean>
+	
+	<bean id="loginForm" class="mj.guri.controller.LoginController">
+		<property name="dao" ref="memberDao"/>
+	</bean>
+	<bean id="join" class="mj.guri.controller.MemberJoinController">
+		<property name="dao" ref="memberDao"/>
+	</bean>
 	<bean id="idCheckForm" class="mj.guri.controller.IdCheckController">
 		<property name="dao" ref="memberDao"/>
 	</bean>
+	
+	<bean id="diaryList" class="mj.guri.controller.DiaryListController">
+		<property name="dao" ref="diaryDao"/>
+	</bean>
+	
 
 
 </beans>

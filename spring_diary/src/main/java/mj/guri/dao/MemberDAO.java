@@ -36,15 +36,15 @@ public class MemberDAO {// 데이터베이스 연동
 	///------------------------------------------------------------
 	// 사용자 인증 처리 메서드
 	public int userCheck(String userid, String userpwd) {
-		int result = -1;
+		int result = -1; // 존재하지않는 회원 
 		
-		String sql = "SELECT userpwd FROM diary_member WHERE userid=?";
+		String sql = "SELECT * FROM diary_member WHERE userid=?";
 		
 		List<MemberVO> pwd = jdbcTemplate.query(sql, rowMapper, userid);
 			
-		if(pwd !=null && pwd.equals(userpwd)) {
+		if(pwd.size() != 0 && pwd.get(0).getUserpwd().equals(userpwd)) {
 			result = 1; // 로그인 성공
-		}else {
+		}else if(pwd.size() != 0 && !pwd.get(0).getUserpwd().equals(userpwd)){
 			result = 0; // 비밀번호가 null이거나, 비밀번호가 일치하지 않는 경우
 		}
 		
@@ -69,11 +69,13 @@ public class MemberDAO {// 데이터베이스 연동
 	}
 	//------------------------------------------------------------------
 	// 입력받은 회원 정보로 회원 가입 처리를 할 메서드
-	public void insertMember(MemberVO mVo) {
+	public int insertMember(MemberVO mVo) {
+		int result;
 		
 		String sql="INSERT INTO diary_member VALUES(?,?,?)";
 		
-		jdbcTemplate.update(sql, mVo.getUserid(), mVo.getUserpwd(),mVo.getNickname());
+		result = jdbcTemplate.update(sql, mVo.getUserid(), mVo.getUserpwd(),mVo.getNickname());
+		return result;
 	}
 	// -------------------------------------------------------------
 	//아이디를 중복 체크하기 위한 메서드
@@ -84,8 +86,6 @@ public class MemberDAO {// 데이터베이스 연동
 		
 		List<MemberVO> confirmId = jdbcTemplate.query(sql, rowMapper, userid);
 		
-		System.out.println("confirmId : " + confirmId);
-
 		if(confirmId.size() == 0) {
 			result = -1;
 		}
@@ -93,7 +93,6 @@ public class MemberDAO {// 데이터베이스 연동
 			result = 1;
 		}
 		
-		System.out.println("result :" + result);
 		return result;
 	}
 	

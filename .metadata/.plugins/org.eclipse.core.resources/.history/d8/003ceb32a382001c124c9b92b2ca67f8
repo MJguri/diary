@@ -1,0 +1,8 @@
+package mj.guri.controller;
+
+public class Snippet {
+	public static void main(String[] args) {
+		mj.guri.controller
+	}
+}
+

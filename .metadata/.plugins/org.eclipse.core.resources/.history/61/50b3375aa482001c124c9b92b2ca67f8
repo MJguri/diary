@@ -1,0 +1,54 @@
+package mj.guri.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import mj.guri.dao.DiaryDAO;
+import mj.guri.vo.DiaryVO;
+
+@Controller
+public class DiaryListController {
+	
+	private DiaryDAO dao;
+	
+	public void setDao(DiaryDAO dao) {
+		this.dao = dao;
+	}
+
+
+
+	@RequestMapping("/diaryList")
+	public String diaryList() {
+		
+		//페이징 처리가 된 게시물 리스트 가져오기
+		String url = "diary_main.jsp";
+		
+		String _section = request.getParameter("section");
+		String _pageNum = request.getParameter("pageNum");
+		
+		System.out.println("section : " + _section);
+		System.out.println("pageNum : " + _pageNum);
+		
+		int section = Integer.parseInt((_section==null)?"1":_section);
+		int pageNum = Integer.parseInt((_pageNum==null)?"1":_pageNum);
+		
+		DiaryDAO dao = DiaryDAO.getInstance();
+		
+		int totalCnt = dao.selectAllNumBoard();
+		List<DiaryVO> dList = dao.selectTargetBoard(section, pageNum);
+		
+		request.setAttribute("totalCnt", totalCnt );
+		request.setAttribute("section", section);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("dList", dList);
+
+		request.getRequestDispatcher(url).forward(request, response);
+		
+		
+		
+		return "diary/diary_main";
+	}
+
+}

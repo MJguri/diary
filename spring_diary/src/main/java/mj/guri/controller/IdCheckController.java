@@ -21,7 +21,6 @@ public class IdCheckController {
 	@RequestMapping(value="idCheck", method=RequestMethod.GET)
 	public String idCheck(HttpServletRequest request) {
 		String userid = request.getParameter("userid");
-		System.out.println("userid : " + userid);
 		
 		int result = dao.confirmID(userid);  
 		

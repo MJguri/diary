@@ -1,0 +1,14 @@
+package mj.guri.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class DiaryListController {
+	
+	@RequestMapping("/diaryList")
+	public String diaryList() {
+		return "diary/diary_main";
+	}
+
+}

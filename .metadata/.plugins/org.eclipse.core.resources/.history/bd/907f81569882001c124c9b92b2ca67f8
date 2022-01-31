@@ -1,0 +1,32 @@
+package mj.guri.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import mj.guri.dao.MemberDAO;
+import mj.guri.vo.MemberVO;
+
+@Controller
+public class MemberJoinController {
+	
+	private MemberDAO dao;
+	
+	public void setDao(MemberDAO dao) {
+		this.dao = dao;
+	}
+
+	@RequestMapping("/join")
+	public String form() {
+		
+		return "login/join";
+	}
+	
+	@RequestMapping("/joinMember")
+	public String memberJoin(MemberVO mVo) {
+		
+		int result = dao.insertMember(mVo);
+		
+		return "login/login";
+	}
+
+}

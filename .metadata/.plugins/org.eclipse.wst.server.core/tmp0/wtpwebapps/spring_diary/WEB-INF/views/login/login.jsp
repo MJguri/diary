@@ -10,7 +10,7 @@
 <body>
 <header></header>
 <div id="longin_line"></div>
-<form action="login.do" method="post">
+<form action="doLogin" method="POST">
 	<table>
 		<tr>
 			<td>아이디</td>

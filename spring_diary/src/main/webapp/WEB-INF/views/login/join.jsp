@@ -15,7 +15,7 @@
 	<div id="join_line"></div>
 
 
-	<form action="join.do" method="POST" name="frm">
+	<form action="joinMember" method="POST" name="frm">
 
 		<table>
 

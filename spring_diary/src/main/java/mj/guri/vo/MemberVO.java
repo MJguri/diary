@@ -6,6 +6,8 @@ public class MemberVO {
 	private String userpwd;
 	private String nickname;
 	
+	public MemberVO() {}
+	
 	public MemberVO(String userid, String userpwd, String nickname) {
 		super();
 		this.userid = userid;

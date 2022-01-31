@@ -8,6 +8,17 @@ public class DiaryVO {
 	private String content;
 	private String diaryDate;
 	
+	public DiaryVO() {}
+	
+	public DiaryVO(int diaryCode, String userid, String title, String content, String diaryDate) {
+		super();
+		this.diaryCode = diaryCode;
+		this.userid = userid;
+		this.title = title;
+		this.content = content;
+		this.diaryDate = diaryDate;
+	}
+	
 	public int getDiaryCode() {
 		return diaryCode;
 	}
