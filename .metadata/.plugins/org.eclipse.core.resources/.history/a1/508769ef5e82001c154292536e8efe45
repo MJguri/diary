@@ -1,0 +1,5 @@
+package mj.guri.controller;
+
+public class LoginController {
+
+}

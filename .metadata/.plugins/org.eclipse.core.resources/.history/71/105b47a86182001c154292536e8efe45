@@ -1,0 +1,13 @@
+package mj.guri.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class IdCheckController {
+	
+	public String idCheck() {
+		
+		return "login/idCheck";
+	}
+
+}
