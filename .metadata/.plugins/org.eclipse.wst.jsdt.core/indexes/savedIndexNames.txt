@@ -3,7 +3,6 @@ INDEX VERSION 1.4+C:\spring\diary\.metadata\.plugins\org.eclipse.wst.jsdt.core\i
 3812311534.index
 3488897336.index
 1877337610.index
-3628623644.index
 224916374.index
 4207145826.index
 1173352007.index

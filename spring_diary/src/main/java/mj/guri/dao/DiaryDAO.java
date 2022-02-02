@@ -1,22 +1,18 @@
 package mj.guri.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import mj.guri.vo.CreateDiaryVO;
 import mj.guri.vo.DiaryVO;
-import mj.guri.vo.MemberVO;
+import mj.guri.vo.UpdateDiaryVO;
 
 public class DiaryDAO {
 	private JdbcTemplate jdbcTemplate;
@@ -44,12 +40,12 @@ public class DiaryDAO {
 	///------------------------------------------------------------
 	
 	// 일기장 작성 메서드
-	public int insertDiary(DiaryVO dVo) {
+	public int insertDiary(CreateDiaryVO cdVo) {
 		int result =-1;
 		
 		String sql = "INSERT INTO DIARY_BOARD VALUES ( DIARY_SEQ.NEXTVAL , ? , ? , ? , SYSDATE)";
 		
-		result = jdbcTemplate.update(sql,dVo.getUserid(),dVo.getTitle(),dVo.getContent());
+		result = jdbcTemplate.update(sql,cdVo.getUserid(),cdVo.getTitle(),cdVo.getContent());
 		
 		return result;
 	}
@@ -65,20 +61,20 @@ public class DiaryDAO {
 	}
 	
 	
-	public void updateDiary(DiaryVO dVo) {
+	public void updateDiary(UpdateDiaryVO udVo) {
 		
 		String sql = "UPDATE DIARY_BOARD SET TITLE = ? , CONTENT = ? WHERE DIARYCODE = ?";
 		
-		jdbcTemplate.update(sql, dVo.getTitle(),dVo.getContent(),dVo.getDiaryCode());
+		jdbcTemplate.update(sql, udVo.getTitle(),udVo.getContent(),udVo.getDiaryCode());
 		
 	}
 	
 	public DiaryVO selectDiaryByCode(int diaryCode) {
 		
 		String sql = "SELECT * FROM DIARY_BOARD WHERE DIARYCODE = ?";
-		DiaryVO dVo = (DiaryVO)jdbcTemplate.query(sql, rowMapper, diaryCode);
+		List<DiaryVO> result = jdbcTemplate.query(sql, rowMapper, diaryCode);
 	
-		return dVo;
+		return result.isEmpty()?null:result.get(0);
 	}
 	
 	public void deleteDiaryByCode(int diaryCode) {

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd"
+	profile="real,dev">
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<bean id="transactionManager" 
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="memberDao" class="mj.guri.dao.MemberDAO">
+		<constructor-arg ref="dataSource"/>
+	</bean>
+	
+	<bean id="diaryDao" class="mj.guri.dao.DiaryDAO">
+		<constructor-arg ref="dataSource"/>
+	</bean>
+	
+	<bean id="loginForm" class="mj.guri.controller.LoginController">
+		<property name="dao" ref="memberDao"/>
+	</bean>
+	<bean id="join" class="mj.guri.controller.MemberJoinController">
+		<property name="dao" ref="memberDao"/>
+	</bean>
+	<bean id="idCheckForm" class="mj.guri.controller.IdCheckController">
+		<property name="dao" ref="memberDao"/>
+	</bean>
+	
+	<bean id="diaryList" class="mj.guri.controller.DiaryListController">
+		<property name="dao" ref="diaryDao"/>
+	</bean>
+	
+	<bean id="diaryCreate" class="mj.guri.controller.DiaryCreateController">
+		<property name="dao" ref="diaryDao"/>
+	</bean>
+	
+	<bean id="diaryRead" class="mj.guri.controller.ReadDiaryController">
+		<property name="dao" ref="diaryDao"/>
+	</bean>
+	
+
+
+</beans>

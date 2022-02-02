@@ -1,0 +1,39 @@
+package mj.guri.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import mj.guri.dao.DiaryDAO;
+import mj.guri.vo.CreateDiaryVO;
+
+@Controller
+public class DiaryCreateController {
+	
+	private DiaryDAO dao;
+	
+	public void setDao(DiaryDAO dao) {
+		this.dao = dao;
+	}
+
+	@RequestMapping("/createDiaryForm")
+	public String createDiaryForm() {
+		return "diary/create_diary";
+	}
+	
+	public String createDiary(CreateDiaryVO cdVo) {
+		
+		int result = dao.insertDiary(cdVo);
+		
+		if(result==1) {
+			request.setAttribute("message", "일기가 작성되었습니다.");
+			
+		}else {
+			request.setAttribute("message", "일기 작성이 실패하였습니다.");
+		}
+		
+		response.sendRedirect("DLS");
+		
+		return "diary/diary_main";
+	}
+
+}

@@ -1,0 +1,30 @@
+package mj.guri.controller;
+
+import javax.servlet.RequestDispatcher;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import mj.guri.dao.DiaryDAO;
+import mj.guri.vo.DiaryVO;
+
+@Controller
+public class ReadDiaryController {
+	
+	public DiaryDAO dao;
+	
+		public void setDao(DiaryDAO dao) {
+		this.dao = dao;
+	}
+
+
+
+	@RequestMapping("readDiary")
+	public String readDiary(DiaryVO dVo) {
+		int diaryCode = dVo.getDiaryCode();
+		
+		dVo = dao.selectDiaryByCode(diaryCode);
+		
+		return "read_diary";
+	}
+}

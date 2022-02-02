@@ -1,0 +1,5 @@
+package mj.guri.vo;
+
+public class CreateDiaryVO {
+
+}

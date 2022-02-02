@@ -11,8 +11,8 @@
 </head>
 <body>
 <div class="diarybody">
-	<a href="DLS?command=paging">페이징보기</a> / 
-	<a href="DLS?command=scroll">무한스크롤보기</a>
+	<a href="DLS">페이징보기</a> / 
+	<a href="scroll">무한스크롤보기</a>
 </div>
 <div class="banner"></div>
 
@@ -51,7 +51,7 @@
 	</tr>
 	<c:forEach items="${dList}" var="d">
 	<tr>
-		<td><a href="RDS?diaryCode=${d.diaryCode }">${d.title }</a></td>
+		<td><a href="readDiary?diaryCode=${d.diaryCode }">${d.title }</a></td>
 		<td>${d.userid }</td>
 		<td>${d.diaryDate }</td>
 	</tr>
@@ -104,7 +104,7 @@
 
 <script>
 function go_create(){
-	location.href="create_diary.jsp";
+	location.href="createDiaryForm";
 }
 
 $(document).ready(function(){

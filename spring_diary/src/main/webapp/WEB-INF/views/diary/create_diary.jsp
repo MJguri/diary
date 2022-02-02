@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../CSS/creatediary.css">
+<link rel="stylesheet" href="../../../resources/CSS/creatediary.css">
 <title>Insert title here</title>
 </head>
 <body>
 <header></header>
-<form action="CDS" method="GET">
+<form action="createDiary" method="GET">
 	<fieldset>
 		<legend>오늘의 일기 작성</legend>
 		작성자 : <input type="text" name="userid"><br>

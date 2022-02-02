@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="../jquery/jquery-3.6.0.js"></script>
+<script src="../../../resources/jquery/jquery-3.6.0.js"></script>
 </head>
 <body>
 
-<form action="UDS" method="GET">
+<form action="updateDiary" method="GET">
 	<fieldset>
 		<legend>오늘의 일기 작성</legend>
 		작성자 : <input type="text" id="userid" name="userid" value="${dVo.userid }"readonly><br>
@@ -27,7 +27,6 @@
 
 <script>
 	function updateDiary(code){
-		console.log(code);
 		
 		$('#title').attr('readonly',false);
 		$('#content').attr('readonly',false);
@@ -36,8 +35,8 @@
 		$('#goUpdate').attr('type','submit');
 	}
 	function deleteDiary(code){
-		alert("삭제");
-		location.href="DDS?code="+code;
+		alert("삭제합니다.");
+		location.href="deleteDiary?code="+code;
 	}
 </script>
 

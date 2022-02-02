@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.1.xsd"
 	profile="real,dev">
+		
+	<context:annotation-config />
 
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
@@ -32,7 +40,23 @@
 	</bean>
 	
 	<bean id="diaryList" class="mj.guri.controller.DiaryListController">
-		<property name="dao" ref="diaryDao"/>
+		<!-- <property name="dao" ref="diaryDao"/> -->
+	</bean>
+	
+	<bean id="diaryCreate" class="mj.guri.controller.DiaryCreateController">
+		<!-- <property name="dao" ref="diaryDao"/> -->
+	</bean>
+	
+	<bean id="diaryRead" class="mj.guri.controller.ReadDiaryController">
+		<!-- <property name="dao" ref="diaryDao"/> -->
+	</bean>
+	
+	<bean id="diaryUpdate" class="mj.guri.controller.UpdateDiaryController">
+		<!-- <property name="dao" ref="diaryDao"/>  -->
+	</bean>
+	
+	<bean id="diaryDelete" class="mj.guri.controller.DeleteDiaryController">
+		<!-- <property name="dao" ref="diaryDao"/> -->
 	</bean>
 	
 
