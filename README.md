@@ -19,3 +19,6 @@
    * 로그인 기능 구현 
    * DiaryListController (로그인시 자신의 일기 LIST 불러오기 기능) 추가
    * DiaryVO, DiaryDAO 객체 생성 후 xml에 빈객체로 생성
+* 2022-02-02
+   * Diary 게시판 CRUD 기능 구현
+   * 자동주입기능 사용   
